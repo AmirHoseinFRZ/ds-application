@@ -21,30 +21,29 @@ class Expression:
         pass
 
 
-def infix_to_postfix(expression):
+def infix_to_postfix(phrase):
     postfix = []
     output = []
-    phrase = expression.phrase
     stack = Stack(len(phrase))
     # type = expression.type
     b = True
     for i in phrase.split(" "):
         if i.isalpha() or i.isdigit():
             output.append(i)
-            postfix.append("output    : " + " ".join(output))
-            postfix.append("operators : " + " ".join(stack.array))
+            postfix.append(" ".join(output))
+            postfix.append(" ".join(stack.array))
             if (not stack.is_empty()) and stack.peek() == '?' and b:
                 stack.pop()
                 output.append('?')
-                postfix.append("output    : " + " ".join(output))
-                postfix.append("operators : " + " ".join(stack.array))
+                postfix.append(" ".join(output))
+                postfix.append(" ".join(stack.array))
         elif i == '(':
             stack.push(i)
         elif i == ')':
             while not stack.is_empty() and stack.peek() != '(':
                 output.append(stack.peek())
-                postfix.append("output    : " + " ".join(output))
-                postfix.append("operators : " + " ".join(stack.array))
+                postfix.append(" ".join(output))
+                postfix.append(" ".join(stack.array))
                 stack.pop()
             stack.pop()
         elif i != " ":
@@ -54,40 +53,64 @@ def infix_to_postfix(expression):
                 else:
                     while not stack.is_empty() and stack.not_greater(i):
                         output.append(stack.peek())
-                        postfix.append("output    : " + " ".join(output))
-                        postfix.append("operators : " + " ".join(stack.array))
+                        postfix.append(" ".join(output))
+                        postfix.append(" ".join(stack.array))
                         stack.pop()
                     stack.push(i)
             except IndexError:
                 stack.push('?')
     while not stack.is_empty():
         output.append(stack.pop())
-        postfix.append("output    : " + " ".join(output))
-        postfix.append("operators : " + " ".join(stack.array))
-    return "\n".join(postfix)
+        postfix.append(" ".join(output))
+        postfix.append(" ".join(stack.array))
+    return postfix
 
 
-def postfix_to_infix(expression):
-    phrase = expression.phrase
+def postfix_to_infix(phrase):
     stack = Stack(len(phrase))
     infix = []
     for i in phrase.split(" "):
         if i.isalpha() or i.isdigit():
             stack.push(i)
-            infix.append("output : " + " ".join(stack.array))
+            infix.append(" ".join(stack.array))
         elif i == "?":
             op1 = stack.pop()
             stack.push("(-" + op1 + ")")
-            infix.append("output : " + " ".join(stack.array))
+            infix.append(" ".join(stack.array))
         else:
             op1 = stack.pop()
             op2 = stack.pop()
             stack.push("(" + op2 + i + op1 + ")")
-            infix.append("output : " + " ".join(stack.array))
-    return "\n".join(infix)
+            infix.append(" ".join(stack.array))
+    return infix
 
 
-def infix_to_prefix(expression):
+def infix_to_prefix(phrase):
+    prefix = []
+    output = []
+    reverse = phrase.split(" ")
+    reverse.reverse()
+    for i in range(len(reverse)):
+        if reverse[i] == '(':
+            output.append(')')
+        elif reverse[i] == ')':
+            output.append('(')
+        else:
+            if reverse[i] == '-' and i == len(reverse) - 1:
+                output[- 1] = '( ' + '- ' + output[- 1] + ' )'
+            elif reverse[i] == '-' and reverse[i + 1] == '(':
+                output[- 1] = '( ' + '- ' + output[- 1] + ' )'
+            else:
+                output.append(reverse[i])
+    output1 = infix_to_postfix(" ".join(output))
+    for i in output1:
+        output = list(i)
+        output.reverse()
+        prefix.append("".join(output))
+    return prefix
+
+
+def prefix_to_infix(expression):
     pass
 
 
@@ -99,14 +122,13 @@ def prefix_to_postfix(expression):
     pass
 
 
-def prefix_to_infix(expression):
-    pass
-
-
-exp = Expression("- 222 + b * ( c ^ d - 3547 ) ^ ( - f + g * h ) - i", "infix")
+exp = Expression("- x + y * z / ( - w + b ) + u", "infix")
+# exp = Expression("222 + b * ( c ^ d - 3547 ) ^ ( f + g * h ) - i", "infix")
 # exp = Expression(" -2 + 3 ", "infix")
+# print(exp.phrase)
+# print("\n".join(infix_to_postfix(exp.phrase)))
+# exp1 = Expression("222 ? b c d ^ 3547 - f ? g h * + ^ * + i -", "postfix")
+# print(exp1.phrase)
+# print("\n".join(postfix_to_infix(exp1.phrase)))
 print(exp.phrase)
-print((infix_to_postfix(exp)))
-exp1 = Expression("222 ? b c d ^ 3547 - f ? g h * + ^ * + i -", "postfix")
-print(exp1.phrase)
-print(postfix_to_infix(exp1))
+print("\n".join(infix_to_prefix(exp.phrase)))
