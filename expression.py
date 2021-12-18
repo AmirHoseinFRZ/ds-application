@@ -195,14 +195,14 @@ def postfix_to_prefix(phrase):
 # print(exp2.phrase)
 # print("\n".join(infix_to_prefix(exp2.phrase)))
 # prefix to infix
-# exp3 = Expression("* - A / B C - / A K L", "prefix")
-# print(exp3.phrase)
-# print("\n".join(prefix_to_infix(exp3.phrase)))
+exp3 = Expression("* - A / B C - / A K L", "prefix")
+print(exp3.phrase)
+print("\n".join(prefix_to_infix(exp3.phrase)))
 # prefix to postfix
 # exp4 = Expression("* - ? A / B C - / A K L", "prefix")
 # print(exp4.phrase)
 # print("\n".join(prefix_to_postfix(exp4.phrase)))
 # postfix to prefix
-exp5 = Expression("A ? B C / - A K / L - *", "postfix")
-print(exp5.phrase)
-print("\n".join(postfix_to_prefix(exp5.phrase)))
+# exp5 = Expression("A ? B C / - A K / L - *", "postfix")
+# print(exp5.phrase)
+# print("\n".join(postfix_to_prefix(exp5.phrase)))

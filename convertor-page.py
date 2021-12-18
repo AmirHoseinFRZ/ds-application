@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'gui.ui'
+# Form implementation generated from reading ui file 'convert.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.6
 #
@@ -14,122 +14,88 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(718, 525)
+        MainWindow.resize(485, 533)
         MainWindow.setStyleSheet("background-color: rgb(244, 152, 129);\n"
-"background-color: rgb(219, 233, 246);")
+                                 "background-color: rgb(210, 223, 235);\n"
+                                 "")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.in2post = QtWidgets.QPushButton(self.centralwidget)
         self.in2post.setGeometry(QtCore.QRect(10, 10, 161, 61))
-        self.in2post.setStyleSheet("color: rgb(255, 255, 255);\n"
-"font: 75 14pt \"Times New Roman\";\n"
-"\n"
-"background-color: rgb(99, 82, 210);")
+        self.in2post.setStyleSheet("background-color: rgb(99, 82, 210);\n"
+                                   "color: rgb(255, 255, 255);\n"
+                                   "font: 75 14pt \"Times New Roman\";"
+                                   "border:none;\n"
+                                   "border-radius:20px;")
         self.in2post.setObjectName("in2post")
         self.in2pre = QtWidgets.QPushButton(self.centralwidget)
         self.in2pre.setGeometry(QtCore.QRect(10, 80, 161, 61))
         self.in2pre.setStyleSheet("background-color: rgb(99, 82, 210);\n"
-"color: rgb(255, 255, 255);\n"
-"font: 75 14pt \"Times New Roman\";")
+                                  "color: rgb(255, 255, 255);\n"
+                                  "font: 75 14pt \"Times New Roman\";"
+                                  "border:none;\n"
+                                  "border-radius:20px;")
         self.in2pre.setObjectName("in2pre")
         self.post2in = QtWidgets.QPushButton(self.centralwidget)
         self.post2in.setGeometry(QtCore.QRect(10, 150, 161, 61))
         self.post2in.setStyleSheet("background-color: rgb(99, 82, 210);\n"
-"color: rgb(255, 255, 255);\n"
-"font: 75 14pt \"Times New Roman\";")
+                                   "color: rgb(255, 255, 255);\n"
+                                   "font: 75 14pt \"Times New Roman\";"
+                                   "border:none;\n"
+                                   "border-radius:20px;")
         self.post2in.setObjectName("post2in")
         self.post2pre = QtWidgets.QPushButton(self.centralwidget)
         self.post2pre.setGeometry(QtCore.QRect(10, 220, 161, 61))
         self.post2pre.setStyleSheet("background-color: rgb(99, 82, 210);\n"
-"color: rgb(255, 255, 255);\n"
-"font: 75 14pt \"Times New Roman\";")
+                                    "color: rgb(255, 255, 255);\n"
+                                    "font: 75 14pt \"Times New Roman\";"
+                                    "border:none;\n"
+                                    "border-radius:20px;")
         self.post2pre.setObjectName("post2pre")
         self.pre2in = QtWidgets.QPushButton(self.centralwidget)
         self.pre2in.setGeometry(QtCore.QRect(10, 290, 161, 61))
         self.pre2in.setStyleSheet("background-color: rgb(99, 82, 210);\n"
-"color: rgb(255, 255, 255);\n"
-"font: 75 14pt \"Times New Roman\";")
+                                  "color: rgb(255, 255, 255);\n"
+                                  "font: 75 14pt \"Times New Roman\";"
+                                  "border:none;\n"
+                                  "border-radius:20px;")
         self.pre2in.setObjectName("pre2in")
         self.pre2post = QtWidgets.QPushButton(self.centralwidget)
         self.pre2post.setGeometry(QtCore.QRect(10, 360, 161, 61))
         self.pre2post.setStyleSheet("background-color: rgb(99, 82, 210);\n"
-"color: rgb(255, 255, 255);\n"
-"font: 75 14pt \"Times New Roman\";\n"
-"")
+                                    "color: rgb(255, 255, 255);\n"
+                                    "font: 75 14pt \"Times New Roman\";"
+                                    "border:none;\n"
+                                    "border-radius:20px;")
         self.pre2post.setObjectName("pre2post")
         self.history = QtWidgets.QPushButton(self.centralwidget)
         self.history.setGeometry(QtCore.QRect(10, 430, 161, 61))
         self.history.setStyleSheet("background-color: rgb(99, 82, 210);\n"
-"color: rgb(255, 255, 255);\n"
-"font: 75 14pt \"Times New Roman\";")
+                                   "color: rgb(255, 255, 255);\n"
+                                   "font: 75 14pt \"Times New Roman\";"
+                                   "border:none;\n"
+                                   "border-radius:20px;")
         self.history.setObjectName("history")
         self.Input = QtWidgets.QLineEdit(self.centralwidget)
-        self.Input.setGeometry(QtCore.QRect(440, 30, 241, 81))
+        self.Input.setGeometry(QtCore.QRect(200, 30, 241, 81))
+        self.Input.setStyleSheet("font: 75 12pt \"Times New Roman\";")
         self.Input.setObjectName("Input")
-        self.Output = QtWidgets.QLineEdit(self.centralwidget)
-        self.Output.setGeometry(QtCore.QRect(440, 150, 241, 341))
-        self.Output.setObjectName("Output")
-        self.BubbleSort = QtWidgets.QPushButton(self.centralwidget)
-        self.BubbleSort.setGeometry(QtCore.QRect(200, 10, 161, 61))
-        self.BubbleSort.setStyleSheet("color: rgb(255, 255, 255);\n"
-"font: 75 14pt \"Times New Roman\";\n"
-"\n"
-"background-color: rgb(99, 82, 210);")
-        self.BubbleSort.setObjectName("BubbleSort")
-        self.InsertionSort = QtWidgets.QPushButton(self.centralwidget)
-        self.InsertionSort.setGeometry(QtCore.QRect(200, 80, 161, 61))
-        self.InsertionSort.setStyleSheet("color: rgb(255, 255, 255);\n"
-"font: 75 14pt \"Times New Roman\";\n"
-"\n"
-"background-color: rgb(99, 82, 210);")
-        self.InsertionSort.setObjectName("InsertionSort")
-        self.SelectionSort = QtWidgets.QPushButton(self.centralwidget)
-        self.SelectionSort.setGeometry(QtCore.QRect(200, 150, 161, 61))
-        self.SelectionSort.setStyleSheet("color: rgb(255, 255, 255);\n"
-"font: 75 14pt \"Times New Roman\";\n"
-"\n"
-"background-color: rgb(99, 82, 210);")
-        self.SelectionSort.setObjectName("SelectionSort")
-        self.MergeSort = QtWidgets.QPushButton(self.centralwidget)
-        self.MergeSort.setGeometry(QtCore.QRect(200, 220, 161, 61))
-        self.MergeSort.setStyleSheet("color: rgb(255, 255, 255);\n"
-"font: 75 14pt \"Times New Roman\";\n"
-"\n"
-"background-color: rgb(99, 82, 210);")
-        self.MergeSort.setObjectName("MergeSort")
-        self.QuickSort = QtWidgets.QPushButton(self.centralwidget)
-        self.QuickSort.setGeometry(QtCore.QRect(200, 290, 161, 61))
-        self.QuickSort.setStyleSheet("color: rgb(255, 255, 255);\n"
-"font: 75 14pt \"Times New Roman\";\n"
-"\n"
-"background-color: rgb(99, 82, 210);")
-        self.QuickSort.setObjectName("QuickSort")
-        self.CountingSort = QtWidgets.QPushButton(self.centralwidget)
-        self.CountingSort.setGeometry(QtCore.QRect(200, 360, 161, 61))
-        self.CountingSort.setStyleSheet("color: rgb(255, 255, 255);\n"
-"font: 75 14pt \"Times New Roman\";\n"
-"\n"
-"background-color: rgb(99, 82, 210);")
-        self.CountingSort.setObjectName("CountingSort")
-        self.RadixSort = QtWidgets.QPushButton(self.centralwidget)
-        self.RadixSort.setGeometry(QtCore.QRect(200, 430, 161, 61))
-        self.RadixSort.setStyleSheet("color: rgb(255, 255, 255);\n"
-"font: 75 14pt \"Times New Roman\";\n"
-"\n"
-"background-color: rgb(99, 82, 210);")
-        self.RadixSort.setObjectName("RadixSort")
         self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(440, 0, 51, 21))
+        self.label.setGeometry(QtCore.QRect(200, 0, 51, 21))
         self.label.setStyleSheet("font: 75 12pt \"MS Shell Dlg 2\";\n"
-"font: 75 12pt \"Times New Roman\";")
+                                 "font: 75 12pt \"Times New Roman\";")
         self.label.setObjectName("label")
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_2.setGeometry(QtCore.QRect(440, 120, 41, 20))
+        self.label_2.setGeometry(QtCore.QRect(200, 120, 41, 20))
         self.label_2.setStyleSheet("font: 75 12pt \"Times New Roman\";")
         self.label_2.setObjectName("label_2")
+        self.output = QtWidgets.QTextEdit(self.centralwidget)
+        self.output.setGeometry(QtCore.QRect(200, 150, 241, 341))
+        self.output.setStyleSheet("font: 75 12pt \"Times New Roman\";")
+        self.output.setObjectName("output")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 718, 21))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 485, 21))
         self.menubar.setObjectName("menubar")
         MainWindow.setMenuBar(self.menubar)
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
@@ -149,19 +115,38 @@ class Ui_MainWindow(object):
         self.pre2in.setText(_translate("MainWindow", "prefix to infix"))
         self.pre2post.setText(_translate("MainWindow", "prefix to postfix"))
         self.history.setText(_translate("MainWindow", "History"))
-        self.BubbleSort.setText(_translate("MainWindow", "Bubble Sort"))
-        self.InsertionSort.setText(_translate("MainWindow", "Insertion Sort"))
-        self.SelectionSort.setText(_translate("MainWindow", "Selection Sort"))
-        self.MergeSort.setText(_translate("MainWindow", "Merge Sort"))
-        self.QuickSort.setText(_translate("MainWindow", "Quick Sort"))
-        self.CountingSort.setText(_translate("MainWindow", "Couting Sort"))
-        self.RadixSort.setText(_translate("MainWindow", "Radix Sort"))
         self.label.setText(_translate("MainWindow", "input"))
         self.label_2.setText(_translate("MainWindow", "output"))
+
+        # -------------- connect buttons to functions -------------------
+        self.post2in.clicked.connect(self.getData)
+
+    def getData(self):
+        # self.output.setText(self.Input.text())
+        def isOperand(x):
+            return ((x >= 'a' and x <= 'z') or (x >= 'A' and x <= 'Z'))
+
+        def getInfix(exp):
+            s = []
+            for i in exp:
+                if (isOperand(i)):
+                    s.insert(0, i)
+
+                else:
+                    op1 = s[0]
+                    s.pop(0)
+                    op2 = s[0]
+                    s.pop(0)
+                    s.insert(0, "(" + op2 + i + op1 + ")")
+
+            return s[0]
+
+        self.output.setText(getInfix(self.Input.text().strip()))
 
 
 if __name__ == "__main__":
     import sys
+
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
