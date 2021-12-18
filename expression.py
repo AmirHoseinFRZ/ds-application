@@ -110,8 +110,26 @@ def infix_to_prefix(phrase):
     return prefix
 
 
-def prefix_to_infix(expression):
-    pass
+def prefix_to_infix(phrase):
+    stack = Stack(len(phrase))
+    reverse = phrase.split(" ")
+    reverse.reverse()
+    infix = []
+    for i in reverse:
+        if i.isalpha() or i.isdigit():
+            stack.push(i)
+            infix.append(" ".join(stack.array))
+        else:
+            if i == "?":
+                op = stack.pop()
+                stack.push("(-" + op + ")")
+                infix.append(" ".join(stack.array))
+            else:
+                op1 = stack.pop()
+                op2 = stack.pop()
+                stack.push("(" + op1 + i + op2 + ")")
+                infix.append(" ".join(stack.array))
+    print("\n".join(infix))
 
 
 def postfix_to_prefix(expression):
@@ -122,13 +140,20 @@ def prefix_to_postfix(expression):
     pass
 
 
-exp = Expression("- x + y * z / ( - w + b ) + u", "infix")
+# exp = Expression("- x + y * z / ( - w + b ) + u", "infix")
 # exp = Expression("222 + b * ( c ^ d - 3547 ) ^ ( f + g * h ) - i", "infix")
 # exp = Expression(" -2 + 3 ", "infix")
 # print(exp.phrase)
 # print("\n".join(infix_to_postfix(exp.phrase)))
+
 # exp1 = Expression("222 ? b c d ^ 3547 - f ? g h * + ^ * + i -", "postfix")
 # print(exp1.phrase)
 # print("\n".join(postfix_to_infix(exp1.phrase)))
+
+# print(exp.phrase)
+# print("\n".join(infix_to_prefix(exp.phrase)))
+
+exp = Expression("+ ? 222 + * y / z + ? w b u", "prefix")  # + x + * y / z + w b u
 print(exp.phrase)
-print("\n".join(infix_to_prefix(exp.phrase)))
+prefix_to_infix(exp.phrase)
+
