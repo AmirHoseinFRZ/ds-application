@@ -12,14 +12,15 @@ class Expression:
     # def get_statement(self):
     #     return self.phrase
 
-    def is_infix(self):
-        pass
+    def isvalid(self, phrase):
+        if self.type == "infix":
+            pass
+        elif self.type == "prefix":
+            pass
+        else:
+            pass
 
-    def is_prefix(self):
-        pass
 
-    def is_postfix(self):
-        pass
 
 
 def infix_to_postfix(phrase):
@@ -195,9 +196,9 @@ def postfix_to_prefix(phrase):
 # print(exp2.phrase)
 # print("\n".join(infix_to_prefix(exp2.phrase)))
 # prefix to infix
-exp3 = Expression("* - A / B C - / A K L", "prefix")
-print(exp3.phrase)
-print("\n".join(prefix_to_infix(exp3.phrase)))
+# exp3 = Expression("* - A / B C - / A K L", "prefix")
+# print(exp3.phrase)
+# print("\n".join(prefix_to_infix(exp3.phrase)))
 # prefix to postfix
 # exp4 = Expression("* - ? A / B C - / A K L", "prefix")
 # print(exp4.phrase)

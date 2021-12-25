@@ -9,7 +9,10 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
-
+from expression import Expression
+from expression import infix_to_postfix, infix_to_prefix
+from expression import postfix_to_infix, postfix_to_prefix
+from expression import prefix_to_infix, prefix_to_postfix
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -78,7 +81,7 @@ class Ui_MainWindow(object):
         self.history.setObjectName("history")
         self.Input = QtWidgets.QLineEdit(self.centralwidget)
         self.Input.setGeometry(QtCore.QRect(200, 30, 241, 81))
-        self.Input.setStyleSheet("font: 75 12pt \"Times New Roman\";")
+        self.Input.setStyleSheet("font: 75 10pt \"Times New Roman\";")
         self.Input.setObjectName("Input")
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(200, 0, 51, 21))
@@ -91,7 +94,7 @@ class Ui_MainWindow(object):
         self.label_2.setObjectName("label_2")
         self.output = QtWidgets.QTextEdit(self.centralwidget)
         self.output.setGeometry(QtCore.QRect(200, 150, 241, 341))
-        self.output.setStyleSheet("font: 75 12pt \"Times New Roman\";")
+        self.output.setStyleSheet("font: 75 10pt \"Times New Roman\";")
         self.output.setObjectName("output")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
@@ -119,30 +122,40 @@ class Ui_MainWindow(object):
         self.label_2.setText(_translate("MainWindow", "output"))
 
         # -------------- connect buttons to functions -------------------
-        self.post2in.clicked.connect(self.getData)
+        self.in2post.clicked.connect(self.i2po)
+        self.in2pre.clicked.connect(self.i2pr)
+        self.post2in.clicked.connect(self.po2i)
+        self.post2pre.clicked.connect(self.po2pr)
+        self.pre2in.clicked.connect(self.pr2i)
+        self.pre2post.clicked.connect(self.pr2po)
+        self.history.clicked.connect(self.h)
 
-    def getData(self):
-        # self.output.setText(self.Input.text())
-        def isOperand(x):
-            return ((x >= 'a' and x <= 'z') or (x >= 'A' and x <= 'Z'))
+    def i2po(self):
+        exp = Expression(self.Input.text(), "infix")
+        self.output.setText("\n".join(infix_to_postfix(exp.phrase)))
 
-        def getInfix(exp):
-            s = []
-            for i in exp:
-                if (isOperand(i)):
-                    s.insert(0, i)
+    def i2pr(self):
+        exp = Expression(self.Input.text(), "infix")
+        self.output.setText("\n".join(infix_to_prefix(exp.phrase)))
 
-                else:
-                    op1 = s[0]
-                    s.pop(0)
-                    op2 = s[0]
-                    s.pop(0)
-                    s.insert(0, "(" + op2 + i + op1 + ")")
+    def po2i(self):
+        exp = Expression(self.Input.text(), "postfix")
+        self.output.setText("\n".join(postfix_to_infix(exp.phrase)))
 
-            return s[0]
+    def po2pr(self):
+        exp = Expression(self.Input.text(), "postfix")
+        self.output.setText("\n".join(postfix_to_prefix(exp.phrase)))
 
-        self.output.setText(getInfix(self.Input.text().strip()))
+    def pr2i(self):
+        exp = Expression(self.Input.text(), "prefix")
+        self.output.setText("\n".join(prefix_to_infix(exp.phrase)))
 
+    def pr2po(self):
+        exp = Expression(self.Input.text(), "prefix")
+        self.output.setText("\n".join(prefix_to_postfix(exp.phrase)))
+
+    def h(self):
+        pass
 
 if __name__ == "__main__":
     import sys
