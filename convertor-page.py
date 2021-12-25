@@ -13,7 +13,7 @@ from expression import Expression
 from expression import infix_to_postfix, infix_to_prefix
 from expression import postfix_to_infix, postfix_to_prefix
 from expression import prefix_to_infix, prefix_to_postfix
-
+from expression import isvalid, split_checker
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -132,27 +132,69 @@ class Ui_MainWindow(object):
 
     def i2po(self):
         exp = Expression(self.Input.text(), "infix")
-        self.output.setText("\n".join(infix_to_postfix(exp.phrase)))
+        x = infix_to_postfix(exp.phrase)
+        if split_checker(exp.phrase):
+            if isvalid(exp, x):
+                self.output.setText("\n".join(x))
+            else:
+                self.output.setText("Invalid type of input!")
+        else:
+            self.output.setText("please separate tokens with one space!")
 
     def i2pr(self):
         exp = Expression(self.Input.text(), "infix")
-        self.output.setText("\n".join(infix_to_prefix(exp.phrase)))
+        x = infix_to_prefix(exp.phrase)
+        if split_checker(exp.phrase):
+            if isvalid(exp, x):
+                self.output.setText("\n".join(x))
+            else:
+                self.output.setText("Invalid type of input!")
+        else:
+            self.output.setText("please separate tokens with one space!")
 
     def po2i(self):
         exp = Expression(self.Input.text(), "postfix")
-        self.output.setText("\n".join(postfix_to_infix(exp.phrase)))
+        x = postfix_to_infix(exp.phrase)
+        if split_checker(exp.phrase):
+            if isvalid(exp, x):
+                self.output.setText("\n".join(x))
+            else:
+                self.output.setText("Invalid type of input!")
+        else:
+            self.output.setText("please separate tokens with one space!")
 
     def po2pr(self):
         exp = Expression(self.Input.text(), "postfix")
-        self.output.setText("\n".join(postfix_to_prefix(exp.phrase)))
+        x = postfix_to_prefix(exp.phrase)
+        if split_checker(exp.phrase):
+            if isvalid(exp, x):
+                self.output.setText("\n".join(x))
+            else:
+                self.output.setText("Invalid type of input!")
+        else:
+            self.output.setText("please separate tokens with one space!")
 
     def pr2i(self):
         exp = Expression(self.Input.text(), "prefix")
-        self.output.setText("\n".join(prefix_to_infix(exp.phrase)))
+        x = prefix_to_infix(exp.phrase)
+        if split_checker(exp.phrase):
+            if isvalid(exp, x):
+                self.output.setText("\n".join(x))
+            else:
+                self.output.setText("Invalid type of input!")
+        else:
+            self.output.setText("please separate tokens with one space!")
 
     def pr2po(self):
         exp = Expression(self.Input.text(), "prefix")
-        self.output.setText("\n".join(prefix_to_postfix(exp.phrase)))
+        x = prefix_to_postfix(exp.phrase)
+        if split_checker(exp.phrase):
+            if isvalid(exp, x):
+                self.output.setText("\n".join(x))
+            else:
+                self.output.setText("Invalid type of input!")
+        else:
+            self.output.setText("please separate tokens with one space!")
 
     def h(self):
         pass

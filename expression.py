@@ -6,22 +6,6 @@ class Expression:
         self.type = type
         self.phrase = phrase
 
-    # def get_type(self):
-    #     return self.type
-    #
-    # def get_statement(self):
-    #     return self.phrase
-
-    def isvalid(self, phrase):
-        if self.type == "infix":
-            pass
-        elif self.type == "prefix":
-            pass
-        else:
-            pass
-
-
-
 
 def infix_to_postfix(phrase):
     postfix = []
@@ -183,6 +167,29 @@ def postfix_to_prefix(phrase):
     return prefix
 
 
+def isvalid(expression, phrase_list):
+    phrase = expression.phrase.split()
+    if expression.type == "infix":
+        if (phrase[0] in "+-*/^?") or (phrase[len(phrase) - 1] in "+-*/^?"):
+            print(1)
+            return False
+        print(4)
+        for i in range(len(phrase) - 1):
+            print(phrase[i], phrase[i + 1])
+            if (phrase[i].isalpha() or phrase[i].isdigit()) and (phrase[i + 1].isalpha() or phrase[i].isdigit()):
+                return False
+    else:
+        for i in phrase_list:
+            if '$' in i:
+                return False
+    return True
+
+
+def split_checker(phrase):
+    for i in phrase.split(' '):
+        if len(i) > 1:
+            return False
+    return True
 # infix to postfix
 # exp = Expression("( ( A - ( B / C ) ) * ( ( A / K ) - L ) )", "infix")  # a + b * ( c ^ d - e ) ^ ( f + g * h ) - i
 # print(exp.phrase)
