@@ -14,7 +14,30 @@ from expression import infix_to_postfix, infix_to_prefix
 from expression import postfix_to_infix, postfix_to_prefix
 from expression import prefix_to_infix, prefix_to_postfix
 from expression import isvalid, split_checker
+from history import Ui_MainWindow4
+
+
 class Ui_MainWindow(object):
+    # dic = {"infix to postfix": 0,
+    #        "infix to prefix": 0,
+    #        "postfix to infix": 0,
+    #        "postfix to prefix": 0,
+    #        "prefix to infix": 0,
+    #        "prefix to postfix": 0
+    #        }
+    dic = [["infix to postfix", 0],
+           ["infix to prefix", 0],
+           ["postfix to infix", 0],
+           ["postfix to prefix", 0],
+           ["prefix to infix", 0],
+           ["prefix to postfix", 0]]
+    def open_history(self):
+        self.window = QtWidgets.QMainWindow()
+        self.ui = Ui_MainWindow4()
+        self.ui.setupUi(self.window)
+        self.ui.HistoryOutput.setText("\n".join(Ui_MainWindow.get_dic()))
+        self.window.show()
+
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(485, 533)
@@ -128,7 +151,7 @@ class Ui_MainWindow(object):
         self.post2pre.clicked.connect(self.po2pr)
         self.pre2in.clicked.connect(self.pr2i)
         self.pre2post.clicked.connect(self.pr2po)
-        self.history.clicked.connect(self.h)
+        self.history.clicked.connect(self.open_history)
 
     def i2po(self):
         exp = Expression(self.Input.text(), "infix")
@@ -136,6 +159,9 @@ class Ui_MainWindow(object):
         if split_checker(exp.phrase):
             if isvalid(exp, x):
                 self.output.setText("\n".join(x))
+                i = get_index(self.dic, "infix to postfix")
+                self.dic[i][1] += 1
+                sorting(i, self.dic)
             else:
                 self.output.setText("Invalid type of input!")
         else:
@@ -147,6 +173,9 @@ class Ui_MainWindow(object):
         if split_checker(exp.phrase):
             if isvalid(exp, x):
                 self.output.setText("\n".join(x))
+                i = get_index(self.dic, "infix to prefix")
+                self.dic[i][1] += 1
+                sorting(i, self.dic)
             else:
                 self.output.setText("Invalid type of input!")
         else:
@@ -158,6 +187,9 @@ class Ui_MainWindow(object):
         if split_checker(exp.phrase):
             if isvalid(exp, x):
                 self.output.setText("\n".join(x))
+                i = get_index(self.dic, "postfix to infix")
+                self.dic[i][1] += 1
+                sorting(i, self.dic)
             else:
                 self.output.setText("Invalid type of input!")
         else:
@@ -169,6 +201,9 @@ class Ui_MainWindow(object):
         if split_checker(exp.phrase):
             if isvalid(exp, x):
                 self.output.setText("\n".join(x))
+                i = get_index(self.dic, "postfix to prefix")
+                self.dic[i][1] += 1
+                sorting(i, self.dic)
             else:
                 self.output.setText("Invalid type of input!")
         else:
@@ -180,6 +215,11 @@ class Ui_MainWindow(object):
         if split_checker(exp.phrase):
             if isvalid(exp, x):
                 self.output.setText("\n".join(x))
+                i = get_index(self.dic, "prefix to infix")
+                print(self.dic[i])
+                self.dic[i][1] += 1
+                print(self.dic)
+                sorting(i, self.dic)
             else:
                 self.output.setText("Invalid type of input!")
         else:
@@ -191,13 +231,39 @@ class Ui_MainWindow(object):
         if split_checker(exp.phrase):
             if isvalid(exp, x):
                 self.output.setText("\n".join(x))
+                i = get_index(self.dic, "prefix to postfix")
+                print("self.dic[i]")
+                self.dic[i][1] += 1
+                sorting(i, self.dic)
             else:
                 self.output.setText("Invalid type of input!")
         else:
             self.output.setText("please separate tokens with one space!")
 
-    def h(self):
-        pass
+    @staticmethod
+    def get_dic():
+        arr = Ui_MainWindow.dic.copy()
+        final = []
+        for i in range(6):
+            if arr[i][1] != 0:
+                final.append(arr[i][0] + " : " + str(arr[i][1]))
+        return final
+
+
+def get_index(l, string):
+    for i in range(len(l)):
+        if string == l[i][0]:
+            return i
+
+
+def sorting(j, arr):
+    while j > 0:
+        # print(arr[j][1], " ", arr[j - 1][1])
+        if arr[j][1] >= arr[j - 1][1]:
+            arr[j], arr[j - 1] = arr[j - 1], arr[j]
+        j -= 1
+    print("in sorting dic is ", Ui_MainWindow.dic)
+
 
 if __name__ == "__main__":
     import sys

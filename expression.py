@@ -171,9 +171,7 @@ def isvalid(expression, phrase_list):
     phrase = expression.phrase.split()
     if expression.type == "infix":
         if (phrase[0] in "+-*/^?") or (phrase[len(phrase) - 1] in "+-*/^?"):
-            print(1)
             return False
-        print(4)
         for i in range(len(phrase) - 1):
             print(phrase[i], phrase[i + 1])
             if (phrase[i].isalpha() or phrase[i].isdigit()) and (phrase[i + 1].isalpha() or phrase[i].isdigit()):
