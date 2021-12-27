@@ -19,7 +19,8 @@ class Ui_MainWindow4(object):
         self.centralwidget.setObjectName("centralwidget")
         self.HistoryOutput = QtWidgets.QTextEdit(self.centralwidget)
         self.HistoryOutput.setGeometry(QtCore.QRect(20, 60, 321, 411))
-        self.HistoryOutput.setStyleSheet("background-color: rgb(210, 223, 235);")
+        self.HistoryOutput.setStyleSheet("background-color: rgb(210, 223, 235);\n"
+                                         "font: 75 15pt \"Times New Roman\";")
         self.HistoryOutput.setObjectName("HistoryOutput")
         self.label = QtWidgets.QLabel(self.centralwidget)
         self.label.setGeometry(QtCore.QRect(130, 0, 91, 41))

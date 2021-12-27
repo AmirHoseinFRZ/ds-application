@@ -157,7 +157,7 @@ class Ui_MainWindow(object):
         exp = Expression(self.Input.text(), "infix")
         x = infix_to_postfix(exp.phrase)
         if split_checker(exp.phrase):
-            if isvalid(exp, x):
+            if isvalid(exp):
                 self.output.setText("\n".join(x))
                 i = get_index(self.dic, "infix to postfix")
                 self.dic[i][1] += 1
@@ -169,10 +169,9 @@ class Ui_MainWindow(object):
 
     def i2pr(self):
         exp = Expression(self.Input.text(), "infix")
-        x = infix_to_prefix(exp.phrase)
         if split_checker(exp.phrase):
-            if isvalid(exp, x):
-                self.output.setText("\n".join(x))
+            if isvalid(exp):
+                self.output.setText("\n".join(infix_to_prefix(exp.phrase)))
                 i = get_index(self.dic, "infix to prefix")
                 self.dic[i][1] += 1
                 sorting(i, self.dic)
@@ -183,10 +182,9 @@ class Ui_MainWindow(object):
 
     def po2i(self):
         exp = Expression(self.Input.text(), "postfix")
-        x = postfix_to_infix(exp.phrase)
         if split_checker(exp.phrase):
-            if isvalid(exp, x):
-                self.output.setText("\n".join(x))
+            if isvalid(exp):
+                self.output.setText("\n".join(postfix_to_infix(exp.phrase)))
                 i = get_index(self.dic, "postfix to infix")
                 self.dic[i][1] += 1
                 sorting(i, self.dic)
@@ -197,10 +195,9 @@ class Ui_MainWindow(object):
 
     def po2pr(self):
         exp = Expression(self.Input.text(), "postfix")
-        x = postfix_to_prefix(exp.phrase)
         if split_checker(exp.phrase):
-            if isvalid(exp, x):
-                self.output.setText("\n".join(x))
+            if isvalid(exp):
+                self.output.setText("\n".join(postfix_to_prefix(exp.phrase)))
                 i = get_index(self.dic, "postfix to prefix")
                 self.dic[i][1] += 1
                 sorting(i, self.dic)
@@ -211,14 +208,11 @@ class Ui_MainWindow(object):
 
     def pr2i(self):
         exp = Expression(self.Input.text(), "prefix")
-        x = prefix_to_infix(exp.phrase)
         if split_checker(exp.phrase):
-            if isvalid(exp, x):
-                self.output.setText("\n".join(x))
+            if isvalid(exp):
+                self.output.setText("\n".join(prefix_to_infix(exp.phrase)))
                 i = get_index(self.dic, "prefix to infix")
-                print(self.dic[i])
                 self.dic[i][1] += 1
-                print(self.dic)
                 sorting(i, self.dic)
             else:
                 self.output.setText("Invalid type of input!")
@@ -227,12 +221,10 @@ class Ui_MainWindow(object):
 
     def pr2po(self):
         exp = Expression(self.Input.text(), "prefix")
-        x = prefix_to_postfix(exp.phrase)
         if split_checker(exp.phrase):
-            if isvalid(exp, x):
-                self.output.setText("\n".join(x))
+            if isvalid(exp):
+                self.output.setText("\n".join(prefix_to_postfix(exp.phrase)))
                 i = get_index(self.dic, "prefix to postfix")
-                print("self.dic[i]")
                 self.dic[i][1] += 1
                 sorting(i, self.dic)
             else:
@@ -258,7 +250,6 @@ def get_index(l, string):
 
 def sorting(j, arr):
     while j > 0:
-        # print(arr[j][1], " ", arr[j - 1][1])
         if arr[j][1] >= arr[j - 1][1]:
             arr[j], arr[j - 1] = arr[j - 1], arr[j]
         j -= 1

@@ -167,18 +167,31 @@ def postfix_to_prefix(phrase):
     return prefix
 
 
-def isvalid(expression, phrase_list):
+def isvalid(expression):
     phrase = expression.phrase.split()
     if expression.type == "infix":
-        if (phrase[0] in "+-*/^?") or (phrase[len(phrase) - 1] in "+-*/^?"):
+        if len(phrase) < 3:
+            return False
+        elif (phrase[0] in "+-*/^?") or (phrase[len(phrase) - 1] in "+-*/^?"):
             return False
         for i in range(len(phrase) - 1):
-            print(phrase[i], phrase[i + 1])
             if (phrase[i].isalpha() or phrase[i].isdigit()) and (phrase[i + 1].isalpha() or phrase[i].isdigit()):
                 return False
-    else:
-        for i in phrase_list:
-            if '$' in i:
+    elif expression.type == "postfix":
+        if len(phrase) < 3:
+            return False
+        elif (phrase[0] in "+-*/^?") or (phrase[len(phrase) - 1].isdigit() or phrase[len(phrase) - 1].isalpha()):
+            return False
+        for i in range(len(phrase) - 1):
+            if phrase[i] in "()":
+                return False
+    elif expression.type == "prefix":
+        if len(phrase) < 3:
+            return False
+        elif (phrase[len(phrase) - 1] in "+-*/^") or (phrase[0].isdigit() or phrase[0].isalpha()):
+            return False
+        for i in range(len(phrase) - 1):
+            if phrase[i] in "()":
                 return False
     return True
 
