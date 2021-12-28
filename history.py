@@ -12,32 +12,33 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Ui_MainWindow4(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(360, 502)
-        MainWindow.setStyleSheet("background-color: rgb(99, 82, 210);")
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.HistoryOutput = QtWidgets.QTextEdit(self.centralwidget)
-        self.HistoryOutput.setGeometry(QtCore.QRect(20, 60, 321, 411))
-        self.HistoryOutput.setStyleSheet("background-color: rgb(210, 223, 235);\n"
-                                         "font: 75 15pt \"Times New Roman\";")
-        self.HistoryOutput.setObjectName("HistoryOutput")
-        self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(130, 0, 91, 41))
-        self.label.setStyleSheet("font: 75 16pt \"Urdu Typesetting\";\n"
-"color: rgb(210, 223, 235);")
-        self.label.setObjectName("label")
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 360, 21))
-        self.menubar.setObjectName("menubar")
-        MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
-        self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
-
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        with open("./stylesheet.qss") as file:
+            stylesheet = file.read()
+            MainWindow.setObjectName("MainWindow")
+            MainWindow.resize(360, 502)
+            MainWindow.setStyleSheet(stylesheet)
+            self.centralwidget = QtWidgets.QWidget(MainWindow)
+            self.centralwidget.setObjectName("centralwidget")
+            self.HistoryOutput = QtWidgets.QTextEdit(self.centralwidget)
+            self.HistoryOutput.setGeometry(QtCore.QRect(20, 60, 321, 411))
+            # self.HistoryOutput.setStyleSheet("background-color: rgb(210, 223, 235);\n"
+            #                                  "font: 75 15pt \"Times New Roman\";")
+            self.HistoryOutput.setObjectName("HistoryOutput")
+            self.label = QtWidgets.QLabel(self.centralwidget)
+            self.label.setGeometry(QtCore.QRect(130, 0, 91, 41))
+            # self.label.setStyleSheet("font: 75 16pt \"Urdu Typesetting\";\n"
+            #                          "color: rgb(210, 223, 235);")
+            self.label.setObjectName("label")
+            MainWindow.setCentralWidget(self.centralwidget)
+            self.menubar = QtWidgets.QMenuBar(MainWindow)
+            self.menubar.setGeometry(QtCore.QRect(0, 0, 360, 21))
+            self.menubar.setObjectName("menubar")
+            MainWindow.setMenuBar(self.menubar)
+            self.statusbar = QtWidgets.QStatusBar(MainWindow)
+            self.statusbar.setObjectName("statusbar")
+            MainWindow.setStatusBar(self.statusbar)
+            self.retranslateUi(MainWindow)
+            QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate

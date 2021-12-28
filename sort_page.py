@@ -11,95 +11,59 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class Ui_MainWindow(object):
+class Ui_MainWindow3(object):
     def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(484, 540)
-        MainWindow.setStyleSheet("background-color: rgb(210, 223, 235);")
-        self.centralwidget = QtWidgets.QWidget(MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.BubbleSort = QtWidgets.QPushButton(self.centralwidget)
-        self.BubbleSort.setGeometry(QtCore.QRect(10, 10, 161, 61))
-        self.BubbleSort.setStyleSheet("background-color: rgb(99, 82, 210);\n"
-                                      "color: rgb(255, 255, 255);\n"
-                                      "font: 75 14pt \"Times New Roman\";"
-                                      "border:none;\n"
-                                      "border-radius:20px;")
-        self.BubbleSort.setObjectName("BubbleSort")
-        self.InsertionSort = QtWidgets.QPushButton(self.centralwidget)
-        self.InsertionSort.setGeometry(QtCore.QRect(10, 80, 161, 61))
-        self.InsertionSort.setStyleSheet("background-color: rgb(99, 82, 210);\n"
-                                         "color: rgb(255, 255, 255);\n"
-                                         "font: 75 14pt \"Times New Roman\";"
-                                         "border:none;\n"
-                                         "border-radius:20px;")
-        self.InsertionSort.setObjectName("InsertionSort")
-        self.SelectionSort = QtWidgets.QPushButton(self.centralwidget)
-        self.SelectionSort.setGeometry(QtCore.QRect(10, 150, 161, 61))
-        self.SelectionSort.setStyleSheet("background-color: rgb(99, 82, 210);\n"
-                                         "color: rgb(255, 255, 255);\n"
-                                         "font: 75 14pt \"Times New Roman\";"
-                                         "border:none;\n"
-                                         "border-radius:20px;")
-        self.SelectionSort.setObjectName("SelectionSort")
-        self.MergeSort = QtWidgets.QPushButton(self.centralwidget)
-        self.MergeSort.setGeometry(QtCore.QRect(10, 220, 161, 61))
-        self.MergeSort.setStyleSheet("background-color: rgb(99, 82, 210);\n"
-                                     "color: rgb(255, 255, 255);\n"
-                                     "font: 75 14pt \"Times New Roman\";"
-                                     "border:none;\n"
-                                     "border-radius:20px;")
-        self.MergeSort.setObjectName("MergeSort")
-        self.QuickSort = QtWidgets.QPushButton(self.centralwidget)
-        self.QuickSort.setGeometry(QtCore.QRect(10, 290, 161, 61))
-        self.QuickSort.setStyleSheet("background-color: rgb(99, 82, 210);\n"
-                                     "color: rgb(255, 255, 255);\n"
-                                     "font: 75 14pt \"Times New Roman\";"
-                                     "border:none;\n"
-                                     "border-radius:20px;")
-        self.QuickSort.setObjectName("QuickSort")
-        self.CountingSort = QtWidgets.QPushButton(self.centralwidget)
-        self.CountingSort.setGeometry(QtCore.QRect(10, 360, 161, 61))
-        self.CountingSort.setStyleSheet("background-color: rgb(99, 82, 210);\n"
-                                        "color: rgb(255, 255, 255);\n"
-                                        "font: 75 14pt \"Times New Roman\";"
-                                        "border:none;\n"
-                                        "border-radius:20px;")
-        self.CountingSort.setObjectName("CountingSort")
-        self.RadixSort = QtWidgets.QPushButton(self.centralwidget)
-        self.RadixSort.setGeometry(QtCore.QRect(10, 430, 161, 61))
-        self.RadixSort.setStyleSheet("background-color: rgb(99, 82, 210);\n"
-                                     "color: rgb(255, 255, 255);\n"
-                                     "font: 75 14pt \"Times New Roman\";"
-                                     "border:none;\n"
-                                     "border-radius:20px;")
-        self.RadixSort.setObjectName("RadixSort")
-        self.label = QtWidgets.QLabel(self.centralwidget)
-        self.label.setGeometry(QtCore.QRect(220, 0, 51, 21))
-        self.label.setStyleSheet("font: 75 12pt \"MS Shell Dlg 2\";\n"
-                                 "font: 75 12pt \"Times New Roman\";")
-        self.label.setObjectName("label")
-        self.Input = QtWidgets.QLineEdit(self.centralwidget)
-        self.Input.setGeometry(QtCore.QRect(220, 30, 241, 81))
-        self.Input.setObjectName("Input")
-        self.label_2 = QtWidgets.QLabel(self.centralwidget)
-        self.label_2.setGeometry(QtCore.QRect(220, 120, 41, 20))
-        self.label_2.setStyleSheet("font: 75 12pt \"Times New Roman\";")
-        self.label_2.setObjectName("label_2")
-        self.output = QtWidgets.QTextEdit(self.centralwidget)
-        self.output.setGeometry(QtCore.QRect(220, 150, 241, 341))
-        self.output.setObjectName("output")
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 484, 21))
-        self.menubar.setObjectName("menubar")
-        MainWindow.setMenuBar(self.menubar)
-        self.statusbar = QtWidgets.QStatusBar(MainWindow)
-        self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
+        with open("./stylesheet.qss") as file:
+            stylesheet = file.read()
+            MainWindow.setObjectName("MainWindow")
+            MainWindow.resize(485, 520)
+            MainWindow.setStyleSheet(stylesheet)
+            self.centralwidget = QtWidgets.QWidget(MainWindow)
+            self.centralwidget.setObjectName("centralwidget")
+            self.BubbleSort = QtWidgets.QPushButton(self.centralwidget)
+            self.BubbleSort.setGeometry(QtCore.QRect(10, 10, 161, 61))
+            self.BubbleSort.setObjectName("BubbleSort")
+            self.InsertionSort = QtWidgets.QPushButton(self.centralwidget)
+            self.InsertionSort.setGeometry(QtCore.QRect(10, 80, 161, 61))
+            self.InsertionSort.setObjectName("InsertionSort")
+            self.SelectionSort = QtWidgets.QPushButton(self.centralwidget)
+            self.SelectionSort.setGeometry(QtCore.QRect(10, 150, 161, 61))
+            self.SelectionSort.setObjectName("SelectionSort")
+            self.MergeSort = QtWidgets.QPushButton(self.centralwidget)
+            self.MergeSort.setGeometry(QtCore.QRect(10, 220, 161, 61))
+            self.MergeSort.setObjectName("MergeSort")
+            self.QuickSort = QtWidgets.QPushButton(self.centralwidget)
+            self.QuickSort.setGeometry(QtCore.QRect(10, 290, 161, 61))
+            self.QuickSort.setObjectName("QuickSort")
+            self.CountingSort = QtWidgets.QPushButton(self.centralwidget)
+            self.CountingSort.setGeometry(QtCore.QRect(10, 360, 161, 61))
+            self.CountingSort.setObjectName("CountingSort")
+            self.RadixSort = QtWidgets.QPushButton(self.centralwidget)
+            self.RadixSort.setGeometry(QtCore.QRect(10, 430, 161, 61))
+            self.RadixSort.setObjectName("RadixSort")
+            self.Input = QtWidgets.QLineEdit(self.centralwidget)
+            self.Input.setGeometry(QtCore.QRect(200, 30, 265, 40))
+            self.Input.setObjectName("Input")
+            self.label = QtWidgets.QLabel(self.centralwidget)
+            self.label.setGeometry(QtCore.QRect(200, -5, 70, 35))
+            self.label.setObjectName("label")
+            self.label_2 = QtWidgets.QLabel(self.centralwidget)
+            self.label_2.setGeometry(QtCore.QRect(200, 70, 70, 35))
+            self.label_2.setObjectName("label_2")
+            self.output = QtWidgets.QTextEdit(self.centralwidget)
+            self.output.setGeometry(QtCore.QRect(200, 105, 265, 380))
+            self.output.setObjectName("output")
+            MainWindow.setCentralWidget(self.centralwidget)
+            self.menubar = QtWidgets.QMenuBar(MainWindow)
+            self.menubar.setGeometry(QtCore.QRect(0, 0, 484, 21))
+            self.menubar.setObjectName("menubar")
+            MainWindow.setMenuBar(self.menubar)
+            self.statusbar = QtWidgets.QStatusBar(MainWindow)
+            self.statusbar.setObjectName("statusbar")
+            MainWindow.setStatusBar(self.statusbar)
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+            self.retranslateUi(MainWindow)
+            QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
@@ -115,40 +79,93 @@ class Ui_MainWindow(object):
         self.label_2.setText(_translate("MainWindow", "output"))
 
         # -------------------------- connect buttons to functions -------------------
-        self.BubbleSort.clicked.connect(self.getData)
-        self.InsertionSort.clicked.connect(self.getData2)
+        self.BubbleSort.clicked.connect(self.bubbleSort)
+        self.InsertionSort.clicked.connect(self.insertionSort)
+        self.SelectionSort.clicked.connect(self.selectionSort)
+        self.QuickSort.clicked.connect(self.getData5)
 
-    def getData(self):
-        def bubbleSort(arr):
-            n = len(arr)
-            for i in range(n - 1):
-                for j in range(0, n - i - 1):
-                    if arr[j] > arr[j + 1]:
-                        arr[j], arr[j + 1] = arr[j + 1], arr[j]
-                    print(" ".join(str(x) for x in arr))
-                    self.output.setText(" ".join(str(x) for x in arr))
+    def bubbleSort(self):
+        arr = self.Input.text().split()
+        arr = list(map(lambda x: int(x), arr))
+        sorted = []
+        n = len(arr)
+        for i in range(n - 1):
+            for j in range(0, n - i - 1):
+                if arr[j] > arr[j + 1]:
+                    arr[j], arr[j + 1] = arr[j + 1], arr[j]
+                string = " ".join(map(lambda x: str(x), arr))
+                if len(sorted) > 0:
+                    print(sorted[-1] + " **** " + string)
+                    if sorted[-1] != string:
+                        sorted.append(string)
+                else:
+                    sorted.append(string)
+        self.output.setText("\n".join(sorted))
 
-        # arr = [64, 34, 25, 12, 22, 11, 90]
-        arr = self.Input.text()
-        arr = arr.split()
-        bubbleSort(arr)
+    def insertionSort(self):
+        arr = self.Input.text().split()
+        arr = list(map(lambda x: int(x), arr))
+        sorted = []
+        for i in range(1, len(arr)):
+            key = arr[i]
+            j = i - 1
+            while j >= 0 and key < arr[j]:
+                arr[j + 1] = arr[j]
+                j -= 1
+            arr[j + 1] = key
+            string = " ".join(map(lambda x: str(x), arr))
+            if len(sorted) > 0:
+                print(sorted[-1] + " **** " + string)
+                if sorted[-1] != string:
+                    sorted.append(string)
+            else:
+                sorted.append(string)
+        self.output.setText("\n".join(sorted))
 
-    def getData2(self):
-        def insertionSort(arr):
-            for i in range(1, len(arr)):
-                key = arr[i]
-                j = i - 1
-                while j >= 0 and key < arr[j]:
-                    arr[j + 1] = arr[j]
-                    j -= 1
-                arr[j + 1] = key
-                print(" ".join(str(x) for x in arr))
-                self.output.setText(" ".join(str(x) for x in arr))
+    def selectionSort(self):
+        arr = self.Input.text().split()
+        arr = list(map(lambda x: int(x), arr))
+        sorted = []
+        for i in range(len(arr)):
+            min_idx = i
+            for j in range(i + 1, len(arr)):
+                if arr[min_idx] > arr[j]:
+                    min_idx = j
+            arr[i], arr[min_idx] = arr[min_idx], arr[i]
+            string = " ".join(map(lambda x: str(x), arr))
+            if len(sorted) > 0:
+                print(sorted[-1] + " **** " + string)
+                if sorted[-1] != string:
+                    sorted.append(string)
+            else:
+                sorted.append(string)
+        self.output.setText("\n".join(sorted))
 
-        # arr = [12, 11, 13, 5, 6]
-        arr = self.Input.text()
-        arr = arr.split()
-        insertionSort(arr)
+    def getData5(self):
+        from random import randint
+        def quick_sort(l):
+            sorted = []
+            if len(l) < 2:
+                return l
+            low, same, high = [], [], []
+            pivot = l[randint(0, len(l) - 1)]
+            print("pivot : " + pivot)
+            for i in l:
+                if i < pivot:
+                    low.append(i)
+                    sorted.append(" ".join(low))
+                elif i == pivot:
+                    same.append(i)
+                    sorted.append(" ".join(same))
+                elif i > pivot:
+                    high.append(i)
+                    sorted.append(" ".join(high))
+
+            print(low, same, high)
+            return quick_sort(low) + same + quick_sort(high), sorted
+        l1 = self.Input.text()
+        l1 = l1.split()
+        self.output.setText("\n".join(quick_sort(l1)))
 
 
 if __name__ == "__main__":
@@ -156,7 +173,7 @@ if __name__ == "__main__":
 
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
+    ui = Ui_MainWindow3()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())
