@@ -1,4 +1,3 @@
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 from expression import Expression
 from expression import infix_to_postfix, infix_to_prefix
@@ -71,13 +70,12 @@ class Ui_MainWindow(object):
             self.statusbar = QtWidgets.QStatusBar(MainWindow)
             self.statusbar.setObjectName("statusbar")
             MainWindow.setStatusBar(self.statusbar)
-
             self.retranslateUi(MainWindow)
             QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Dijkstra"))
         self.in2post.setText(_translate("MainWindow", "Infix to Postfix"))
         self.in2pre.setText(_translate("MainWindow", "Infix to Prefix"))
         self.post2in.setText(_translate("MainWindow", "Postfix to Infix"))
@@ -197,7 +195,6 @@ def sorting(j, arr):
         if arr[j][1] >= arr[j - 1][1]:
             arr[j], arr[j - 1] = arr[j - 1], arr[j]
         j -= 1
-    print("in sorting dic is ", Ui_MainWindow.dic)
 
 
 if __name__ == "__main__":

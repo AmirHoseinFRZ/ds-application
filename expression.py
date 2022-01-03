@@ -11,10 +11,10 @@ def infix_to_postfix(phrase):
     postfix = []
     output = []
     stack = Stack(len(phrase))
-    # type = expression.type
     phrase = phrase.split(" ")
     b = True
     for i in range(len(phrase)):
+        print(i)
         if phrase[i].isalpha() or phrase[i].isdigit():
             output.append(phrase[i])
             postfix.append(" ".join(output))
