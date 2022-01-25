@@ -16,8 +16,10 @@ class Ui_MainWindow0(object):
         self.ui.setupUi(self.window)
         self.window.show()
     def setupUi(self, MainWindow):
+
         with open("./stylesheet.qss") as file:
             stylesheet = file.read()
+            MainWindow.setWindowIcon(QtGui.QIcon('ico.png'))
             MainWindow.setObjectName("MainWindow")
             MainWindow.resize(280, 268)
             MainWindow.setStyleSheet(stylesheet)
@@ -50,7 +52,7 @@ class Ui_MainWindow0(object):
         MainWindow.setWindowTitle(_translate("MainWindow", "Dijkstra"))
         self.Convertor.setText(_translate("MainWindow", "Convertor"))
         self.Sort.setText(_translate("MainWindow", "Sorter"))
-        self.label.setText(_translate("MainWindow", "Select a button"))
+        self.label.setText(_translate("MainWindow", "  Select a button"))
 
         self.Convertor.clicked.connect(self.open_convertor)
         self.Sort.clicked.connect(self.open_sort)

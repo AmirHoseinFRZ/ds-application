@@ -5,6 +5,7 @@ class Ui_MainWindow4(object):
         with open("./stylesheet.qss") as file:
             stylesheet = file.read()
             MainWindow.setObjectName("MainWindow")
+            MainWindow.setWindowIcon(QtGui.QIcon('ico.png'))
             MainWindow.resize(360, 502)
             MainWindow.setStyleSheet(stylesheet)
             self.centralwidget = QtWidgets.QWidget(MainWindow)
