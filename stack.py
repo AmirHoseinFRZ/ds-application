@@ -22,10 +22,13 @@ class Stack:
         self.array.append(op)
 
     def not_greater(self, i):
-        precedence = {'+': 1, '-': 1, '*': 2, '/': 2, '^': 3}
+        precedence = {"+": 1, "-": 1, "*": 2, "/": 2, "^": 3}
         try:
+            print(0)
             a = precedence[i]
+            print(i, a)
             b = precedence[self.peek()]
+            print("peek", b)
             return True if a <= b else False
         except KeyError:
             return False

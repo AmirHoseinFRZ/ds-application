@@ -29,27 +29,26 @@ def infix_to_postfix(phrase):
             while not stack.is_empty() and stack.peek() != '(':
                 output.append(stack.peek())
                 postfix.append(" ".join(output))
-                postfix.append(" ".join(stack.array))
                 stack.pop()
             stack.pop()
+            postfix.append(" ".join(stack.array))
         elif phrase[i] != " ":
             try:
                 if phrase[i] == '-':
-                    if phrase[i - 1] == '(' or stack.is_empty():
+                    if phrase[i - 1] == '(' or (stack.is_empty() and len(output) == 0):
                         stack.push('?')
                     else:
-                        while not stack.is_empty() and stack.not_greater(i):
+                        while not stack.is_empty() and stack.not_greater(phrase[i]):
                             output.append(stack.peek())
                             postfix.append(" ".join(output))
                             postfix.append(" ".join(stack.array))
                             stack.pop()
                         stack.push(phrase[i])
                 else:
-                    while not stack.is_empty() and stack.not_greater(i):
-                        output.append(stack.peek())
+                    while (not stack.is_empty()) and (stack.not_greater(phrase[i])):
+                        output.append(stack.pop())
                         postfix.append(" ".join(output))
                         postfix.append(" ".join(stack.array))
-                        stack.pop()
                     stack.push(phrase[i])
             except IndexError:
                 stack.push('?')
@@ -171,10 +170,11 @@ def isvalid(expression):
     if expression.type == "infix":
         if len(phrase) < 3:
             return False
-        elif (phrase[0] in "+-*/^?") or (phrase[len(phrase) - 1] in "+-*/^?"):
+        elif (phrase[0] in "+*/^?") or (phrase[len(phrase) - 1] in "+-*/^?"):
             return False
         for i in range(len(phrase) - 1):
-            if (phrase[i].isalpha() or phrase[i].isdigit()) and (phrase[i + 1].isalpha() or phrase[i].isdigit()):
+            if (phrase[i].isalpha() or phrase[i].isdigit()) and (phrase[i + 1].isalpha() or phrase[i + 1].isdigit()):
+                print(phrase[i])
                 return False
     elif expression.type == "postfix":
         if len(phrase) < 3:
