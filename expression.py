@@ -83,6 +83,7 @@ def infix_to_prefix(phrase):
     output = []
     reverse = phrase.split(" ")
     reverse.reverse()
+    print(reverse)
     for i in range(len(reverse)):
         if reverse[i] == '(':
             output.append(')')
@@ -97,9 +98,9 @@ def infix_to_prefix(phrase):
                 output.append(reverse[i])
     output1 = infix_to_postfix(" ".join(output))
     for i in output1:
-        output = list(i)
+        output = list(i.split())
         output.reverse()
-        prefix.append("".join(output))
+        prefix.append(" ".join(output))
     return prefix
 
 
@@ -197,7 +198,7 @@ def isvalid(expression):
 
 def split_checker(phrase):
     for i in phrase.split(' '):
-        if len(i) > 1:
+        if ("+" in i or "-" in i or "*" in i or "/" in i or "(" in i or ")" in i or "?" in i) and len(i) > 1:
             return False
     return True
 # infix to postfix
@@ -209,7 +210,7 @@ def split_checker(phrase):
 # print(exp1.phrase)
 # print("\n".join(postfix_to_infix(exp1.phrase)))
 # infix to prefix
-# exp2 = Expression("( - A - ( B / C ) ) * ( ( A / K ) - L )", "infix")
+# exp2 = Expression(" ", "infix")
 # print(exp2.phrase)
 # print("\n".join(infix_to_prefix(exp2.phrase)))
 # prefix to infix
